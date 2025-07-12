@@ -213,10 +213,10 @@ async function callAzureOpenAI(text, messageId, config) {
 
 //for email alert
 async function notifyUserIfSevere(text, analysis) {
-    // if (analysis.severity < 3) {
-    //     console.log('Message severity below threshold for email notification.');
-    //     return;
-    // }
+    if (analysis.severity < 3) {
+        console.log('Message severity below threshold for email notification.');
+        return;
+    }
 
     // Get the recipient email address from storage
     const { notifyEmailAddress } = await chrome.storage.sync.get('notifyEmailAddress');
