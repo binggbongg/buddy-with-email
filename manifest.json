@@ -14,7 +14,7 @@
     "https://messenger.com/*",
     "https://www.facebook.com/*",
     "https://*.openai.azure.com/*",
-    "https://bantai-buddy-alert-service-f4gde7ajgxa4hbet.southeastasia-01.azurewebsites.net"
+    "https://bantai-buddy-alert-service-f4gde7ajgxa4hbet.southeastasia-01.azurewebsites.net/*"
   ],
   "background": {
     "service_worker": "background (1).js"
