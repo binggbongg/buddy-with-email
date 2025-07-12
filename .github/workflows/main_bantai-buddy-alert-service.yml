@@ -35,9 +35,7 @@ jobs:
         working-directory: ./buddy-email-alert/
 
       - name: Check zip file contents
-        run: |
-        ls -lh ./buddy-email-alert/
-        ls -lh ./buddy-email-alert/release.zip
+        run: zip release.zip buddy-email-alert/* -r 
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
