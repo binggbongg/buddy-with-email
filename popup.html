@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MessengerGuard V2</title>
+    <style>
+        body {
+            width: 350px;
+            padding: 15px;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        h2 {
+            margin: 0 0 15px 0;
+            color: #333;
+        }
+        h3 {
+            margin: 10px 0;
+            color: #555;
+            font-size: 16px;
+        }
+        .api-key-section {
+            display: none; /* Hidden by default, shown if key not set */
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .input-group {
+            margin: 10px 0;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 12px;
+            color: #666;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            width: 100%;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        .status {
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .active {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+        .inactive {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+        .stats {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 8px 0;
+            font-size: 14px;
+        }
+        .stat-label {
+            color: #666;
+        }
+        .stat-value {
+            font-weight: bold;
+            color: #333;
+        }
+        .help-text {
+            font-size: 11px;
+            color: #666;
+            margin-top: 5px;
+            line-height: 1.4;
+        }
+        .error-message {
+            color: #d9534f;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+        .success-message {
+            color: #5cb85c;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>MessengerGuard V2</h2>
+        
+        <div class="api-key-section" id="apiKeySection">
+            <h3>Azure OpenAI Configuration</h3>
+            <p class="help-text">Configure your Azure OpenAI service to enable AI-powered content filtering.</p>
+            
+            <div class="input-group">
+                <label for="azureEndpoint">Azure Endpoint URL</label>
+                <input type="url" id="azureEndpoint" placeholder="https://your-resource.openai.azure.com">
+                <div class="help-text">Your Azure OpenAI resource endpoint</div>
+            </div>
+            
+            <div class="input-group">
+                <label for="azureApiKey">API Key</label>
+                <input type="password" id="azureApiKey" placeholder="Enter your Azure API key">
+                <div class="help-text">Found in Azure Portal > Keys and Endpoint</div>
+            </div>
+            
+            <div class="input-group">
+                <label for="deploymentName">Deployment Name (Optional)</label>
+                <input type="text" id="deploymentName" placeholder="gpt-4o">
+                <div class="help-text">Default: gpt-4o</div>
+            </div>
+            
+            <button id="saveConfig">Save Configuration</button>
+            <div class="error-message" id="errorMessage"></div>
+            <div class="success-message" id="successMessage"></div>
+        </div>
+
+        <div class="status" id="statusDisplay">
+            <div id="statusText">Checking Configuration...</div>
+        </div>
+        
+        <div class="stats" id="statsSection">
+            <h3>Protection Statistics</h3>
+            <div class="stat-item">
+                <span class="stat-label">Messages Analyzed:</span>
+                <span class="stat-value" id="messagesDetected">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Messages Blocked:</span>
+                <span class="stat-value" id="messagesBlocked">0</span>
+            </div>
+            <button id="resetStats">Reset Statistics</button>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

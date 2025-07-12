@@ -1,0 +1,53 @@
+{
+  "manifest_version": 3,
+  "name": "BantAI Buddy",
+  "version": "0.1",
+  "description": "AI-powered protection for children that analyzes your Messenger locally to detect potentially harmful content, without sending any data outside your browser.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://www.messenger.com/*",
+    "https://messenger.com/*",
+    "https://www.facebook.com/*",
+    "https://*.openai.azure.com/*",
+    "https://bantai-buddy-alert-0f3aashva8cyftshj.southeastasia-01.azurewebsites.net/*"
+  ],
+  "background": {
+    "service_worker": "background (1).js"
+  },
+  "options_ui": {
+    "page": "options.html", 
+    "open_in_tab": true
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.messenger.com/*",
+        "https://messenger.com/*",
+        "https://www.facebook.com/*"
+      ],
+      "js": ["content-script (1).js"],
+      "run_at": "document_start"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "BantAI Buddy",
+    "default_icon": {
+      "16": "final_icon-16.png",
+      "32": "final_icon-32.png"
+    }
+  },
+  "icons": {
+    "16": "final_icon-16.png",
+    "48": "final_icon-48.png",
+    "128": "final_icon-128.png"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+}

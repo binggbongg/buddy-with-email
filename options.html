@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BantAI Buddy Settings</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                padding: 20px;
+                width: 300px;
+                margin: auto;
+                background-color: #f4f7f6;
+                color: #333;
+            }
+            h1 {
+                color: #2c3e50;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            input[type="text"] {
+                width: calc(100% - 22px);
+                padding: 10px;
+                margin-bottom: 15px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+            button {
+                background-color: #3498db;
+                color: white;
+                padding: 10px 15px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 16px;
+                width: 100%;
+            }
+            button:hover {
+                background-color: #2980b9;
+            }
+            /* CSS to hide the status message by default */
+            #saveStatus {
+                display: none; /* Hide it initially */
+                margin-top: 15px;
+                text-align: center;
+                color: #27ae60; /* Green color for success */
+                font-weight: bold;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>BantAI Buddy Email Alert Set-up</h1>
+        <input type="text" id="emailAdd" placeholder="Enter email here..."/>
+        <button id="saveButton">Save</button>
+        <p id="saveStatus">Saved Successfully!</p>
+        <script src="options.js"></script>
+    </body>
+</html>
